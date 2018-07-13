@@ -40,11 +40,71 @@ public:
     } 
 };
 
+// 扫了一眼网上的思路，自己写的，效率和网上的比起来差一些
+class solution2 {
+public:
+    int maxarea(vector<int>& height) {
+        int left = 0, right = height.size()-1;
+        int i = left, j = right;
+        int h = height[left] < height[right] ? height[left] : height[right];
+        int max = h * (right - left);
+        int tmp;
+
+        while (i < j) {
+            while (i < right) {
+                h = height[i] < height[right] ? height[i] : height[right];
+                tmp = h * (right - i);
+                if (tmp > max) {
+                    max = tmp;
+                    left = i;
+                    break;
+                }
+                i++;
+            }
+            while (j > left) {
+                h = height[left] < height[j] ? height[left] : height[j];
+                tmp = h * (j - left);
+                if (tmp > max) {
+                    max = tmp;
+                    right = j;
+                    break;
+                }
+                j--;
+            }
+        }
+        return max;
+    }
+};
+
+// 网上的答案
+class solution3 {
+public:
+    int maxarea(vector<int>& height) {
+        int left = 0;
+        int right = height.size() - 1;
+        int res = 0;
+        int tmp = 0;
+        while (left < right) {
+            tmp = min(height[left], height[right]) * (right - left);
+            res = max(res, tmp);
+            height[left] < height[right] ? left++ : right--;
+        }
+        return res;
+    }
+private:
+    int max(int a, int b) {
+        return a > b ? a : b;
+    }
+    int min(int a, int b) {
+        return a < b ? a : b;
+    }
+};
+
 int main(void)
 {
     vector<int> array;
     int num;
-    solution s;
+    solution3 s;
 
     srand(time(0));
     while (1) {
