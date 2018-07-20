@@ -6,6 +6,7 @@
 #include <ctime>
 using namespace std;
 
+// wrong answer
 class solution1 {
 public:
     vector<vector<int> > threesum(vector<int>& nums) {
@@ -30,7 +31,7 @@ public:
                     middle = nums[i] < nums[j] ? nums[i] : nums[j];
                 }
                 big = 0 - small - middle;
-                // cout << small << " " << middle << " " << big << endl;
+                cout << small << " " << middle << " " << big << endl;
                 // 为了下一个for的push_back得以正确排序，
                 // 这里应该为hash[big] = [small, middle]
                 veci.push_back(small);
@@ -65,6 +66,42 @@ public:
         return vveci;
     }
 };
+
+// 网长抄的
+class solution2 {
+    vector<vector<int> > threesum(vector<int>& nums) {
+        vector<vector<int> > res;
+        sort(nums.begin(), nums.end());
+        int i, j, f;
+        int target;
+        for (f = 0; f < nums.size() - 2; f++) {
+            // 因为已经排过序，这个大于0，后面的肯定都大于0，
+            // 相加无法等于0
+            if (nums[f] > 0) 
+                break;
+            if (f > 0 && nums[f] == nums[f-1])
+                continue;
+            target = 0 - nums[f];
+            i = f + 1;
+            j = nums.size() - 1;
+            while (i < j) {
+                if (nums[i] + nums[j] == target) {
+                    res.push_back({nums[f], nums[i], nums[j]});
+                    if (i > f+1 && nums[i] == nums[i+1])
+                        i++;
+                    if (j < nums.size() - 1 && nums[j] == nums[j+1])
+                        j--;
+                    i++;j--;
+                } else if (nums[i] + nums[j] > target) {
+                    j--;
+                } else if (nums[i] + nums[j] <= target) {
+                    i++;
+                }
+            }
+        }
+        return res;
+    }
+}
 
 int main(void)
 {
