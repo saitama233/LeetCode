@@ -53,11 +53,34 @@ private:
     }
 };
 
+// 网上看的答案
+class solution2 {
+public:
+    vector<string> lettercombinations(string digits) {
+        string telemap[10] = {"0", "1", "abc", "def", "ghi", 
+                "jhl", "mno", "pqrs", "tuv", "wxyz"};
+        vector<string> res, tmp;
+
+        res.push_back("");
+        for (int i = 0; i < digits.size(); i++) {
+            string chars = telemap[digits[i] - '0'];
+            tmp.clear();
+            for (int c = 0; c < chars.size(); c++) {
+                for (int j = 0; j < res.size(); j++) {
+                    tmp.push_back(res[j] + chars[c]);
+                }
+            }
+            res = tmp;
+        }
+        return res;
+    }
+};
+
 int main(void)
 {
     string str;
     vector<string> vs;
-    solution1 s;
+    solution2 s;
     while(1) {
         cout << "Input a string(Ctrl+c to quit)";
         cin >> str;
