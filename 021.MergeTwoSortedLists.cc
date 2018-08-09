@@ -68,11 +68,12 @@ public:
             p->next = tmp;
             p = p->next;
         }
+        #if 0
         while (l1) {
             tmp = new ListNode(l1->val);
             p->next = tmp;
             p = p->next;
-            l1 = l1->next;
+            l1 = l1->next; 
         }
         while (l2) {
             tmp = new ListNode(l2->val);
@@ -80,7 +81,14 @@ public:
             p = p->next;
             l2 = l2->next;
         }
-
+        #else
+        if (l1) {
+            p->next = l1;
+        } else {
+            p->next = l2;
+        }
+        #endif
+        
         return l->next;
     }
 };
