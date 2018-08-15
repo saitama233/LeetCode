@@ -38,9 +38,31 @@ public:
     }
 };
 
+// 网上看的答案，递归
+class solution2 {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        genParenthesis(n, n, "", res);
+        return res;
+    }
+    void genParenthesis(int left, int right, string s, vector<string> &res) {
+        if (left > right)
+            return;
+        if (left == 0 && right == 0)
+            res.push_back(s);
+        else {
+            if (left > 0)
+                genParenthesis(left-1, right, s + '(', res);
+            if (right > 0)
+                genParenthesis(left, right-1, s + ')', res);
+        }
+    }
+};
+
 int main(void)
 {
-    solution1 s;
+    solution2 s;
     int num;
     vector<string> vs;
 
