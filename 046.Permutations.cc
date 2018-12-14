@@ -36,7 +36,7 @@ private:
         }
         if (front == nums.begin())
             return -1;
-        
+       
         for (behind = nums.end() - 1; behind >= front; behind--) {
             if (*behind > *(front - 1)) {
                 swap(behind, front - 1);
@@ -51,6 +51,30 @@ private:
         *a ^= *b;
         *b ^= *a;
         *a ^= *b;
+    }
+};
+
+// 40min，回溯法，扫了一眼4ms的答案，直接写出来了，一次AC，
+class Solution2 {
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> res;
+        dfs(res, nums, 0);
+
+        return res;
+    }
+private:
+    void dfs(vector<vector<int>> &res, vector<int>& nums, int pos) {
+        if (pos + 1 == nums.size()) {
+            res.push_back(nums);
+            return;
+        }
+
+        for (int i = pos; i < nums.size(); i++) {
+            swap(nums[i], nums[pos]);
+            dfs(res, nums, pos + 1);
+            swap(nums[i], nums[pos]);
+        }
     }
 };
 
