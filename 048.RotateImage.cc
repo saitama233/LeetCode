@@ -10,11 +10,13 @@ public:
         int len = matrix.size();
         float center = (len - 1) / 2.0;
 
+        /* 遍历左上角1/4的区域，每遍历一个都处理它的四个方向 */
         for (int i = 0; i < len / 2; i++) {
             for (int j = 0; j <= (len - 1) / 2; j++) {
                 x = i;
                 y = j;
                 cur = matrix[i][j];
+                /* 处理当前位置的其他三个位置 */
                 for (int idx = 0; idx < 4; idx++) {
                     /* matrix[center + (y - center)][center - (x - center)] 为下一个 */
                     next = matrix[y][center - (x - center)];
