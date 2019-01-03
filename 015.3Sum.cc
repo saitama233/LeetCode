@@ -4,6 +4,7 @@
 #include <unordered_set>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 using namespace std;
 
 // wrong answer
@@ -101,7 +102,7 @@ class solution2 {
         }
         return res;
     }
-}
+};
 
 int main(void)
 {
