@@ -60,7 +60,7 @@ int main(void)
 		vector<int> v = s.searchRange((*iter).first, (*iter).second);
 		cout << "the array is: " << endl;
 		print((*iter).first);
-		cout << "to find: " << (*iter).secondi << endl;
+		cout << "to find: " << (*iter).second << endl;
 		cout << "{" << v[0] << ", " << v[1] << "}" << endl;
 	}
 }
