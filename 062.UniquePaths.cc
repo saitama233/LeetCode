@@ -31,6 +31,11 @@
 */
 
 /* 回溯，1h，试了下[3,2]，[7,3]结果都是正确的，但[50,50]或[100,100]都超时了， */
+
+#include <iostream>
+#include <linux/types.h>
+using namespace std;
+
 class Solution1 {
 public:
     int uniquePaths(int m, int n) {
@@ -74,8 +79,8 @@ public:
 /* Runtime: 0 ms, faster than 100.00% of C++ online submissions for Unique Paths. 我觉得不准，， */
 class Solution3 {
 public:
-    __u128 uniquePaths(int m, int n) {
-        __u128 sum_arr[100][100] = {0};
+    __u64 uniquePaths(int m, int n) {
+        __u64 sum_arr[100][100] = {0};
         /* 先将上边和左边初始化为1，sum_arr[0][0]为0， */
         for (int i = 1; i < m; i++)
             sum_arr[i][0] = 1;
