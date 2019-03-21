@@ -13,7 +13,7 @@ OBJS += 034.FindFirstandLastPositionofElementinSortedArray 035.SearchInsertPosit
 OBJS += 042.TrappingRainWater 046.Permutations 048.RotateImage
 OBJS += 049.GroupAnagrams 055.JumpGame 056.MergeIntervals
 OBJS += 062.UniquePaths 064.MinimumPathSum 070.ClimbingStairs 072.EditDistance
-OBJS += 075.SortColors 078.Subsets
+OBJS += 075.SortColors 078.Subsets 079.WordSearch
 
 # .PHONY: all clean
 all: $(OBJS)
